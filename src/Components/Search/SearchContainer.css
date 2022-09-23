@@ -1,0 +1,14 @@
+.search-container {
+    width: 700px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.search {
+    width: 500px;
+    margin: 10px auto;
+}
+
+.search-list {
+    text-align: left;
+}

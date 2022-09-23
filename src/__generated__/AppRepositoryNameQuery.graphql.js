@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ac929b47ffed2f995db464da86247f77>>
+ * @generated SignedSource<<91ad211fd937a1ab9cbbb2403930128b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,93 +11,74 @@
 var node = (function(){
 var v0 = [
   {
-    "kind": "Literal",
-    "name": "first",
-    "value": 1
-  },
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "queryString"
+  }
+],
+v1 = [
   {
     "kind": "Literal",
+    "name": "first",
+    "value": 10
+  },
+  {
+    "kind": "Variable",
     "name": "query",
-    "value": "ahbin-cho"
+    "variableName": "queryString"
   },
   {
     "kind": "Literal",
     "name": "type",
-    "value": "USER"
+    "value": "REPOSITORY"
   }
 ],
-v1 = {
+v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "InlineFragment",
   "selections": [
-    (v1/*: any*/),
+    (v2/*: any*/),
     {
       "alias": null,
-      "args": [
-        {
-          "kind": "Literal",
-          "name": "first",
-          "value": 10
-        }
-      ],
-      "concreteType": "RepositoryConnection",
-      "kind": "LinkedField",
-      "name": "repositories",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "concreteType": "RepositoryEdge",
-          "kind": "LinkedField",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "concreteType": "Repository",
-              "kind": "LinkedField",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                (v1/*: any*/),
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "name",
-                  "storageKey": null
-                }
-              ],
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        }
-      ],
-      "storageKey": "repositories(first:10)"
+      "args": null,
+      "kind": "ScalarField",
+      "name": "name",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "description",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "stargazerCount",
+      "storageKey": null
     }
   ],
-  "type": "User",
+  "type": "Repository",
   "abstractKey": null
 };
 return {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
     "name": "AppRepositoryNameQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v0/*: any*/),
+        "args": (v1/*: any*/),
         "concreteType": "SearchResultItemConnection",
         "kind": "LinkedField",
         "name": "search",
@@ -119,7 +100,7 @@ return {
                 "name": "node",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/)
+                  (v3/*: any*/)
                 ],
                 "storageKey": null
               }
@@ -127,7 +108,7 @@ return {
             "storageKey": null
           }
         ],
-        "storageKey": "search(first:1,query:\"ahbin-cho\",type:\"USER\")"
+        "storageKey": null
       }
     ],
     "type": "Query",
@@ -135,13 +116,13 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
     "name": "AppRepositoryNameQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v0/*: any*/),
+        "args": (v1/*: any*/),
         "concreteType": "SearchResultItemConnection",
         "kind": "LinkedField",
         "name": "search",
@@ -170,11 +151,11 @@ return {
                     "name": "__typename",
                     "storageKey": null
                   },
-                  (v2/*: any*/),
+                  (v3/*: any*/),
                   {
                     "kind": "InlineFragment",
                     "selections": [
-                      (v1/*: any*/)
+                      (v2/*: any*/)
                     ],
                     "type": "Node",
                     "abstractKey": "__isNode"
@@ -186,21 +167,21 @@ return {
             "storageKey": null
           }
         ],
-        "storageKey": "search(first:1,query:\"ahbin-cho\",type:\"USER\")"
+        "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "51960ecb3780ec1c24afddee4adbbf23",
+    "cacheID": "38fccdeb20cdd3492a8f65c20d5df046",
     "id": null,
     "metadata": {},
     "name": "AppRepositoryNameQuery",
     "operationKind": "query",
-    "text": "query AppRepositoryNameQuery {\n  search(query: \"ahbin-cho\", type: USER, first: 1) {\n    edges {\n      node {\n        __typename\n        ... on User {\n          id\n          repositories(first: 10) {\n            edges {\n              node {\n                id\n                name\n              }\n            }\n          }\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query AppRepositoryNameQuery(\n  $queryString: String!\n) {\n  search(type: REPOSITORY, first: 10, query: $queryString) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n          description\n          stargazerCount\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-node.hash = "600b58b7e0b1c66fcc2824f4c8ef23d7";
+node.hash = "217bcb63cbeaea9854e6f50e25cee3fa";
 
 module.exports = node;
