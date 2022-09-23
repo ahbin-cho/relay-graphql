@@ -18,6 +18,7 @@ export const RepositoryNameQuery = graphql`
             name
             description
             stargazerCount
+            viewerHasStarred
           }
         }
       }

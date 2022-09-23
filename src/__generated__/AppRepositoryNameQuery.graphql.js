@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<91ad211fd937a1ab9cbbb2403930128b>>
+ * @generated SignedSource<<068f7f660d06060bec68bf717c86fdb7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -63,6 +63,13 @@ v3 = {
       "args": null,
       "kind": "ScalarField",
       "name": "stargazerCount",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "viewerHasStarred",
       "storageKey": null
     }
   ],
@@ -172,16 +179,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "38fccdeb20cdd3492a8f65c20d5df046",
+    "cacheID": "af1283414793f9457a201699ad598d16",
     "id": null,
     "metadata": {},
     "name": "AppRepositoryNameQuery",
     "operationKind": "query",
-    "text": "query AppRepositoryNameQuery(\n  $queryString: String!\n) {\n  search(type: REPOSITORY, first: 10, query: $queryString) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n          description\n          stargazerCount\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n    }\n  }\n}\n"
+    "text": "query AppRepositoryNameQuery(\n  $queryString: String!\n) {\n  search(type: REPOSITORY, first: 10, query: $queryString) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n          description\n          stargazerCount\n          viewerHasStarred\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n    }\n  }\n}\n"
   }
 };
 })();
 
-node.hash = "217bcb63cbeaea9854e6f50e25cee3fa";
+node.hash = "b5771b70403a3af3a46399b458450002";
 
 module.exports = node;

@@ -8,6 +8,12 @@
     width: 500px;
     margin: 10px auto;
 }
+.search-input {
+    width: 300px;
+    border: 1px solid #ccc;
+    height: 32px;
+    border-radius: 4px;
+}
 
 .search-list {
     text-align: left;
