@@ -9,8 +9,8 @@ const { Suspense } = React;
 
 // Define a query
 export const RepositoryNameQuery = graphql`
-  query AppRepositoryNameQuery($queryString: String!) {
-    search(type: REPOSITORY, first: 10, query: $queryString) {
+  query AppRepositoryNameQuery($queryString: String!, $after: String) {
+    search(type: REPOSITORY, first: 10, query: $queryString, after: $after) {
       edges {
         node {
           ... on Repository {
@@ -21,29 +21,28 @@ export const RepositoryNameQuery = graphql`
             viewerHasStarred
           }
         }
+        cursor
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
       }
     }
   }
 `;
 
 const preloadedQuery = loadQuery(RelayEnvironment, RepositoryNameQuery, {
-  /* query variables */
   queryString: "",
 });
 
 function App() {
-  // const data = usePreloadedQuery(RepositoryNameQuery, props.preloadedQuery);
-
   return (
     <div className="App">
       <RelayEnvironmentProvider environment={RelayEnvironment}>
         <Suspense fallback={"Loading..."}>
-          {/* <App preloadedQuery={preloadedQuery} /> */}
           <SearchContainer preloadedQuery={preloadedQuery} />
         </Suspense>
       </RelayEnvironmentProvider>
-      {/* <p>{data.repositoryOwner.avatarUrl}</p> */}
-      {/* <SearchContainer /> */}
     </div>
   );
 }

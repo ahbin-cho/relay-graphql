@@ -2,7 +2,7 @@ import { Button, List } from "antd";
 import { useMutation, usePreloadedQuery } from "react-relay";
 import { RepositoryNameQuery } from "../../App";
 import graphql from "babel-plugin-relay/macro";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import "./SearchList.css";
 
@@ -29,10 +29,16 @@ const RemoveStarRepoMutation = graphql`
   }
 `;
 
-export function SearchList({ queryReference }) {
+export function SearchList({
+  queryReference,
+  onReadyNextPage,
+  onReadyLoadMoreBtn,
+}) {
   const data = usePreloadedQuery(RepositoryNameQuery, queryReference);
   const [addStarCommit] = useMutation(AddStarRepoMutation);
   const [removeStarCommit] = useMutation(RemoveStarRepoMutation);
+
+  const [searchList, setSearchList] = useState([]);
 
   const onClickBtnStar = useCallback(
     (id, hasStarred) => {
@@ -45,33 +51,53 @@ export function SearchList({ queryReference }) {
     [addStarCommit, removeStarCommit]
   );
 
+  //   useEffect(() => {
+  //     const { edges, pageInfo } = data.search;
+  //     const { endCursor, hasNextPage } = pageInfo;
+
+  //     if (hasNextPage) {
+  //       onReadyNextPage(endCursor);
+  //       onReadyLoadMoreBtn(true);
+  //     } else {
+  //       onReadyLoadMoreBtn(false);
+  //     }
+
+  //     if (edges.length > 0) {
+  //       setSearchList((prev) => {
+  //         return [...prev, ...edges];
+  //       });
+  //     }
+  //   }, [data, onReadyNextPage, onReadyLoadMoreBtn]);
+
   return (
     <div className="search-list-component">
       <List
         dataSource={data.search.edges}
         renderItem={(item) => {
-          const { node } = item;
-          const { id, stargazerCount, viewerHasStarred, name, description } =
-            node;
-          return (
-            <List.Item
-              actions={[
-                <span>
-                  <Button
-                    icon="star"
-                    onClick={() => {
-                      onClickBtnStar(id, viewerHasStarred);
-                    }}
-                    className={viewerHasStarred && "has-starred"}
-                  >
-                    {stargazerCount}
-                  </Button>
-                </span>,
-              ]}
-            >
-              <List.Item.Meta title={name} description={description} />
-            </List.Item>
-          );
+          if (item) {
+            const { node } = item;
+            const { id, stargazerCount, viewerHasStarred, name, description } =
+              node;
+            return (
+              <List.Item
+                actions={[
+                  <span>
+                    <Button
+                      icon="star"
+                      onClick={() => {
+                        onClickBtnStar(id, viewerHasStarred);
+                      }}
+                      className={viewerHasStarred ? "has-starred" : ""}
+                    >
+                      {stargazerCount}
+                    </Button>
+                  </span>,
+                ]}
+              >
+                <List.Item.Meta title={name} description={description} />
+              </List.Item>
+            );
+          }
         }}
       />
     </div>
