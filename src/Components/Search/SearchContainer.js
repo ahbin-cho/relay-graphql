@@ -3,8 +3,8 @@ import { Button } from "antd";
 import { useQueryLoader } from "react-relay/hooks";
 
 import "./SearchContainer.css";
-import { RepositoryNameQuery } from "../../App";
 import { SearchList } from "./SearchList";
+import { RepositoryNameQuery } from "../../Root/App";
 
 export function SearchContainer(props) {
   const [queryReference, loadQuery] = useQueryLoader(

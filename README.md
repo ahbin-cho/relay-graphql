@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+#### 기본프로젝트 구성
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+create-react-app
 
-## Available Scripts
+#### 실행방법
 
-In the project directory, you can run:
+1.
+```bash
+npm install
+```
+2.
+```bash
+npm start
+```
 
-### `npm start`
+```
+#### 프로젝트 구조
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+├── node_modules
+├── src
+│   ├── Components
+│   │	├── Search
+│   │	│    ├── __generated__
+│   │	│    ├── SearchContainer.css
+│   │	│    ├── SearchContainer.js
+│   │	│    ├── SearchList.css
+│   │	│    └── SearchList.js
+│   ├── Root
+│   │	├── __generated__
+│   │	├── App.css
+│   │	└── App.js
+│   ├── utils
+│   │	├── fetchGraphQL.js
+│   │	└── RelayEnvironment.js
+│   ├── index.css
+│   └── index.js
+├── public
+├── schema.graphql
+├── package-lock.json
+└── package.json
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+``` 
+#### 추가 설명
+1. UI 라이브러리 : AntDesign 사용
 
-### `npm test`
+#### 기능 구현 X
+cursor based pagination 구현하지 못함
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 느낀점
+graphql 와 relay 를 이번 과제를 통해 처음 적용해보면서 진행을 하였는데 레퍼런스를 참고 하면서 진행하려 했으나 많은 자료가 없었다. 그래서 가이드 문서를 번역하면서 진행했는데, 역시나 부족했던 것일까 pagination 구현을 제대로 하지 못하여 아쉬웠다.

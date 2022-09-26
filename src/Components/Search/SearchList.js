@@ -1,10 +1,10 @@
 import { Button, List } from "antd";
 import { useMutation, usePreloadedQuery } from "react-relay";
-import { RepositoryNameQuery } from "../../App";
 import graphql from "babel-plugin-relay/macro";
 import { useCallback, useEffect, useState } from "react";
 
 import "./SearchList.css";
+import { RepositoryNameQuery } from "../../Root/App";
 
 const AddStarRepoMutation = graphql`
   mutation SearchListAddStarMutation($starrableId: ID!) {

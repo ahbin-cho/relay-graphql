@@ -3,8 +3,8 @@ import graphql from "babel-plugin-relay/macro";
 import { loadQuery, RelayEnvironmentProvider } from "react-relay/hooks";
 
 import "./App.css";
-import { SearchContainer } from "./Components/Search/SearchContainer";
-import RelayEnvironment from "./RelayEnvironment";
+import RelayEnvironment from "../utils/RelayEnvironment";
+import { SearchContainer } from "../Components/Search/SearchContainer";
 const { Suspense } = React;
 
 // Define a query
